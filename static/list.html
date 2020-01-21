@@ -1,0 +1,104 @@
+<!doctype html>
+<head>
+    <title>SWE Praktikum 3</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+</head>
+<body>
+<div class="container">
+    <aside class="top login-container">
+        <ul class="navigation-list">
+            <li><a href="/list">Login</a></li>
+        </ul>
+    </aside>
+    <header class="top title">
+        <h1>Tagungsplaner HSNR</h1>
+    </header>
+    <nav class="navigation">
+        <ul class="navigation-list">
+            <li><a href="#">Aktuelle Hinweise</a></li>
+            <li><a href="#">Tagungsübersicht</a></li>
+            <li><a href="#">Tagungsprogramm erstellen</a></li>
+        </ul>
+    </nav>
+    <main class="content">
+        <!-- content -->
+        <h1>Aktuelle Hinweise</h1>
+        <table>
+            <thead>
+            <th>
+                id
+            </th>
+            <th>
+                text
+            </th>
+            <th>optionen</th>
+            </thead>
+
+            <tbody id="aktuellehinweise"></tbody>
+        </table>
+
+        <a href="/list/add">Eintrag hinzufügen</a>
+        <!-- /content -->
+    </main>
+    <footer class="bottom">
+        <ul class="footer-navigation">
+            <li><a href="#">Impressum</a></li>
+            <li><a href="#">Datenschutz</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="#">AGB</a></li>
+        </ul>
+    </footer>
+</div>
+<script type="text/javascript">
+
+
+    function deleteEntry(id) {
+        fetch('/api/aktuelle-hinweise/' + id, {
+            method: 'delete',
+
+        })
+            .then(res => res.json())
+            .then(console.log)
+    }
+
+    async function refreshList() {
+        try {
+            let response = await fetch("/api/aktuelle-hinweise");
+            if (response.status === 200 && response.ok) {
+                let data = await response.json();
+
+                let listelements = [];
+                data.forEach(information => {
+                    let li = `<tr><td>${information.id}</td><td><a href="/list/${information.id}">${information.text}</a></td><td><button class="delete" value="${information.id}">löschen</button> </td></tr>`;
+                    listelements.push(li);
+                });
+                document.querySelector('#aktuellehinweise').innerHTML = listelements.join('');
+                console.log(data);
+            }
+
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    (async () => {
+
+            refreshList();
+
+            document.querySelector('body').addEventListener('click', async evt => {
+                if (evt.target.classList.contains('delete')) {
+                    evt.preventDefault();
+
+                    deleteEntry(evt.target.value);
+                    refreshList();
+                }
+
+
+            });
+        }
+    )()
+
+
+</script>
+</body>
+</html>

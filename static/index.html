@@ -7,7 +7,7 @@
 <div class="container">
     <aside class="top login-container">
         <ul class="navigation-list">
-            <li><a href="#">Login</a></li>
+            <li><a href="/list">Login</a></li>
         </ul>
     </aside>
     <header class="top title">
@@ -21,91 +21,10 @@
         </ul>
     </nav>
     <main class="content">
-        <h2>Tagungs-Manager</h2>
-        <input type="text" placeholder="Name" required />
-        <input type="text" placeholder="Redner" required />
-        <input type="text" placeholder="Kosten" required />
-        <input type="date" placeholder="Datum" required />
-        <input type="text" placeholder="Zeit" required />
-        <input type="text" placeholder="Dauer in Stunden" required />
-        <input type="text" placeholder="Max Teilnehmer" required />
-        <select>
-            <option disabled selected>Raum</option>
-            <option value="a">A123</option>
-            <option value="a">A123</option>
-            <option value="a">A123</option>
-            <option value="a">A123</option>
-            <option value="a">A123</option>
-            <option value="a">A123</option>
-        </select>
-        <input type="submit" value="Tagung erstellen" />
-        <input type="button" value="Abbrechen" />
-
-        <h2>Tagungsübersicht</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Raum</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <h2>Tagungsübersicht</h2>
-        <table class="full-size">
-            <thead>
-            <tr>
-                <th>Raum</th>
-                <th>Zeit</th>
-                <th>Beschreibung</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            <tr>
-                <td>A123</td>
-                <td>8.00-12.00</td>
-                <td>Hier steht ein Beispieltext!</td>
-            </tr>
-            </tbody>
-        </table>
+        <!-- content -->
+        <h1>Aktuelle Hinweise</h1>
+        <ul id="aktuellehinweise"></ul>
+        <!-- /content -->
     </main>
     <footer class="bottom">
         <ul class="footer-navigation">
@@ -116,4 +35,26 @@
         </ul>
     </footer>
 </div>
+<script type="text/javascript">
+    (async () => {
+            try {
+                let response = await fetch("./api/aktuelle-hinweise");
+                if (response.status === 200 && response.ok) {
+                    let data = await response.json();
+
+                    let listelements = [];
+                    data.forEach(information => {
+                        let li = `<li>${information.text}</li>`;
+                        listelements.push(li);
+                    });
+                    document.querySelector('#aktuellehinweise').innerHTML = listelements.join()
+                }
+                console.log(response);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+    )()
+</script>
 </body>
+</html>

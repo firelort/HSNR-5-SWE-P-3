@@ -1,0 +1,116 @@
+<!doctype html>
+<head>
+    <title>SWE Praktikum 3</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="container">
+    <aside class="top login-container">
+        <ul class="navigation-list">
+            <li><a href="/list">Login</a></li>
+        </ul>
+    </aside>
+    <header class="top title">
+        <h1>Tagungsplaner HSNR</h1>
+    </header>
+    <nav class="navigation">
+        <ul class="navigation-list">
+            <li><a href="#">Aktuelle Hinweise</a></li>
+            <li><a href="#">Tagungsübersicht</a></li>
+            <li><a href="#">Tagungsprogramm erstellen</a></li>
+        </ul>
+    </nav>
+    <main class="content">
+        <!-- content -->
+        <h1>Aktuelle Hinweise</h1>
+        <form id="form">
+            <input type="hidden" name="id" id="id">
+            <input type="text" name="text" id="text" placeholder="Hinweistext">
+            <button>speichern</button>
+        </form>
+        <!-- /content -->
+    </main>
+    <footer class="bottom">
+        <ul class="footer-navigation">
+            <li><a href="#">Impressum</a></li>
+            <li><a href="#">Datenschutz</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="#">AGB</a></li>
+        </ul>
+    </footer>
+</div>
+
+<script type="text/javascript">
+
+    let lastPartOfURL = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+    let id = !isNaN(lastPartOfURL) ? parseInt(lastPartOfURL) : null;
+
+    let idField = document.querySelector('#id');
+    let textField = document.querySelector('#text');
+
+
+    async function getEntry(id) {
+        try {
+            let response = await fetch("/api/aktuelle-hinweise/" + id);
+            if (response.status === 200 && response.ok) {
+                let data = await response.json();
+
+                idField.value = data.id;
+                textField.value = data.text;
+
+
+            }
+            console.log(response);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function addEntry(text) {
+        fetch('/api/aktuelle-hinweise', {
+            method: 'POST',
+            body: JSON.stringify({
+                text: text
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        })
+            .then(res => res.json())
+            .then(console.log)
+    }
+
+    async function editEntry(data) {
+        fetch('/api/aktuelle-hinweise/' + data.id, {
+            method: 'PUT',
+            body: JSON.stringify({
+                text: data.text,
+                id: data.id
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            }
+        })
+            .then(res => res.json())
+            .then(console.log)
+    }
+
+    (async () => {
+        if (id) {
+            await getEntry(id)
+        }
+
+        document.querySelector('#form').addEventListener('submit', evt => {
+            evt.preventDefault();
+
+            if (idField.value) {
+                editEntry({id: idField.value, text: textField.value});
+            } else {
+                addEntry(textField.value);
+            }
+        })
+
+    })()
+</script>
+</body>
+</html>

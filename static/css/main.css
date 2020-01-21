@@ -91,13 +91,19 @@ a {
     margin-top: 0;
 }
 
-table.full-size{
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+table.full-size {
     width: 100%;
 }
 
 table {
     border-collapse: collapse;
 }
+
 table, th, td {
     border: 1px solid black;
 }
@@ -108,7 +114,7 @@ th {
     background-color: lightgray;
 }
 
-th,td {
+th, td {
     padding: 5px;
 }
 
