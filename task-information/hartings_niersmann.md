@@ -75,6 +75,8 @@ es fehlen zu allen Diagrammen erläuternde Beschreibungen.
 
 ## Berücksichtigt die Systemarchitektur Aspekte der technischen Umsetzung ausreichend?
 
+Aus den oben genannten Gründen sehen wir die technische Umsetzung als nicht ausreichend berücksichtigt.
+
 ## Sind die Entwürfe zur Benutzungsschnittstelle als Implementierungsvorgabe geeignet?
 
 Es besteht die Möglichkeit einer Implementierung (gewisser Teile) der Benutzungsschnittstelle,
@@ -93,36 +95,37 @@ Anzumerken ist auch, dass bei gleichem Grundlayout die Wireframes modular aufgeb
 Des Weiteren wird nicht klar, ob das nicht anzeigen des "aktuellen Tabs" eine Designentscheidung ist.
 
 ### Anmerkung zu den einzelnen Wireframes
+
 * Wireframe_Home (gleichzeitig Aktuelle Hinweise)
-        * Kann auf dieser Seite nur ein Hinweis existieren oder sind auch mehrere möglich?
-    * Wireframe_Tagungsübersicht
-        * Art der Tagungseinheit & Redner / Autoren fehlt
-        * Soll es eine Detailansicht geben, dann würde das Wireframe fehlen
-    * Wireframe_Leistungsübersicht
-        * Ist es Zufall, dass die Leistungsübersicht nur Teil von der Tagungsübersicht ist?
-    * Wireframe_Leistungen_buchen
-        * Warum gibt es hier wieder mehr Leistungen als im anderen Wireframe
-        * Gibt es eine Bestätigungsabfrage, bevor die Buchung ausgeführt wird?
-    * Wireframe_Spezielle_hinweise
-        * Was ist der Unterschied zwischen dem aktuellem und speziellem Hinweise?
-    * Wireframe_tagungsmanager
-        * Designentscheidung, dass die Buttons nicht mittig sind?
-    * Wireframe_Tagungsmangererstellen
-        * Sind alle Felder pflicht?
-        * Wo werden die Räume für das Dropdown verwaltet?
-    * Wireframe_Tagungsprogramm    
-        * Wirwar im Wireframe ohne Login kann ein Tagungsprogramm erstellt werden
-        * Das UI erlaubt eine Erstellung nicht
-    * Wireframe_Berechtigungen_verwalten
-        * Was bedeutet hochstufen?
-        * Gibt es auch ein runterstufen?
-        * Welche Rolle darf die Funktion nutzen?
-    * Wireframe_Buchungen_verwalten
-        * Ist die Tabelle extra nicht die volle Breite?
-    * Wireframe_registrierungen_verwalten
-        * Ist die Tabelle extra nicht die volle Breite?
-    * Wireframe_Zahlungen_verwalten
-        * Wo kommt die Funktion Mahnen her? Was macht diese?
+    * Kann auf dieser Seite nur ein Hinweis existieren oder sind auch mehrere möglich?
+* Wireframe_Tagungsübersicht
+    * Art der Tagungseinheit & Redner / Autoren fehlt
+    * Soll es eine Detailansicht geben, dann würde das Wireframe fehlen
+* Wireframe_Leistungsübersicht
+    * Ist es Zufall, dass die Leistungsübersicht nur Teil von der Tagungsübersicht ist?
+* Wireframe_Leistungen_buchen
+    * Warum gibt es hier wieder mehr Leistungen als im anderen Wireframe
+    * Gibt es eine Bestätigungsabfrage, bevor die Buchung ausgeführt wird?
+* Wireframe_Spezielle_hinweise
+    * Was ist der Unterschied zwischen dem aktuellem und speziellem Hinweise?
+* Wireframe_tagungsmanager
+    * Designentscheidung, dass die Buttons nicht mittig sind?
+* Wireframe_Tagungsmangererstellen
+    * Sind alle Felder pflicht?
+    * Wo werden die Räume für das Dropdown verwaltet?
+* Wireframe_Tagungsprogramm    
+    * Wirwar im Wireframe ohne Login kann ein Tagungsprogramm erstellt werden
+    * Das UI erlaubt eine Erstellung nicht
+* Wireframe_Berechtigungen_verwalten
+    * Was bedeutet hochstufen?
+    * Gibt es auch ein runterstufen?
+    * Welche Rolle darf die Funktion nutzen?
+* Wireframe_Buchungen_verwalten
+    * Ist die Tabelle extra nicht die volle Breite?
+* Wireframe_registrierungen_verwalten
+    * Ist die Tabelle extra nicht die volle Breite?
+* Wireframe_Zahlungen_verwalten
+    * Wo kommt die Funktion Mahnen her? Was macht diese?
 
 ## Ist die Definition und Beschreibung des Datenmodells für die Implementierung ausreichend?
 
