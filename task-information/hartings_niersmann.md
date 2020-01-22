@@ -142,6 +142,5 @@ Wie auch bei den Diagrammen fehlt hier eine gute Beschreibung.
 * Was ist der Unterschied zwischen einer Leistung und einer Tagung?
 Ist ein Tagungsprogramm aus mehrere Leistungen individuell zusammenstellbar?
 * Soll auch eine Möglichkeit der Mehrtägigkeit berücksichtigt werden?
-* Warum wird das Entwurfsmuster Interface nicht erwähnt?
 * Ist ein Rücktritt von gebuchten Leistungen möglich?
 * Können Tagungsprogramme geändert werden?
